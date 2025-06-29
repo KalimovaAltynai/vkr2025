@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #F3F4F6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+            color: #1F2937;
+        }
+
+        .container {
+            background: #FFFFFF;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 680px;
+            max-width: 95%;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1E3A8A;
+        }
+
+        p {
+            margin: 12px 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #111827;
+        }
+
+        a.button {
+            display: inline-block;
+            margin-top: 18px;
+            background: linear-gradient(135deg, #1E3A8A, #2563EB);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        a.button:hover {
+            background: linear-gradient(135deg, #2563EB, #1E3A8A);
+        }
+
+        .button + .button {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>{{ article.title }}</h1>
+    <p><strong>Аннотация:</strong> {{ article.abstract }}</p>
+    <p><strong>Ключевые слова:</strong> {{ article.keywords }}</p>
+    <p><strong>Таблиц:</strong> {{ article.tables_count }}, <strong>Рисунков:</strong> {{ article.figures_count }}</p>
+
+    <a href="/download/{{ article.file_name }}?user_id={{ user_id }}" class="button" download>📥 Скачать статью</a>
+    <a href="/" class="button">← Назад к списку</a>
+</div>
+
+</body>
+</html>
