@@ -1,0 +1,7 @@
+uploads/
+articles/
+*.pdf
+*.zip
+__pycache__/
+.venv/
+.idea/
