@@ -1,5 +1,5 @@
 from database.connection import conn
-from services.requirement_checker import check_requirements
+
 
 
 
