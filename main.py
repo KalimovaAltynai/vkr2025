@@ -16,19 +16,19 @@ app.include_router(clustering.router)
 app.include_router(users.router)
 app.include_router(logs.router)
 
-# 🌐 Подключение статики и шаблонов
+# Подключение статики и шаблонов
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# 🔐 Сессии (если используешь авторизацию через cookie)
+# Сессии (если используешь авторизацию через cookie)
 app.add_middleware(SessionMiddleware, secret_key="super-secret-key")
 
-# 🏠 Главная страница
+# Главная страница
 @app.get("/", response_class=HTMLResponse)
 async def read_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-# 📰 Статья (по ID или имени файла)
+# Статья (по ID или имени файла)
 @app.get("/article/{article_id}", response_class=HTMLResponse)
 async def read_article(request: Request, article_id: int):
     # Можно тут же делать выборку из БД, пока мок:
@@ -37,7 +37,7 @@ async def read_article(request: Request, article_id: int):
         "figures_count": 1, "tables_count": 2, "file_name": "example.pdf"
     }, "user_id": 1})
 
-# ⚙️ Панель администратора
+# Панель администратора
 @app.get("/admin", response_class=HTMLResponse)
 async def admin_panel(request: Request):
     return templates.TemplateResponse("admin.html", {"request": request})
